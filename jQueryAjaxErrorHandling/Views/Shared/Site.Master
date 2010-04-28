@@ -1,0 +1,59 @@
+﻿<%@ Master Language="C#" Inherits="System.Web.Mvc.ViewMasterPage" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title><asp:ContentPlaceHolder ID="TitleContent" runat="server" /></title>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+    <script type="text/javascript" src="../../Scripts/modernizr-1.1.min.js"></script>
+    <link href="../../Content/reset.css" rel="stylesheet" type="text/css" />
+    <link href="../../Content/Site.css" rel="stylesheet" type="text/css" />
+    <link href="../../Content/jquery.pnotify.default.css" rel="stylesheet" type="text/css" />
+    <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/themes/redmond/jquery-ui.css" rel="stylesheet" type="text/css" />    
+    <script type="text/javascript" src="../../Scripts/jquery.blockUI.js"></script>
+    <script type="text/javascript" src="../../Scripts/jquery.pnotify.js"></script>
+	<script type="text/javascript" src="http://jqueryui.com/themeroller/themeswitchertool/"></script> 
+    <script type="text/javascript" src="../../Scripts/jquery.form.js"></script>
+</head>
+<body>
+    <div class="page">
+
+        <div id="header">
+            <div id="title">
+                <h1>My MVC Application</h1>
+            </div>
+              
+            <div id="logindisplay">
+                <% Html.RenderPartial("LogOnUserControl"); %>
+            </div> 
+            
+            <div id="menucontainer">
+            
+                <ul id="menu">              
+                    <li><%= Html.ActionLink("Home", "Index", "Home")%></li>
+                    <li><%= Html.ActionLink("About", "About", "Home")%></li>
+                </ul>
+            
+            </div>
+        </div>
+
+        <div id="main" class="borderradius">
+            <asp:ContentPlaceHolder ID="MainContent" runat="server" />
+
+            <div id="footer">
+            </div>
+        </div>
+        <br />
+    </div>
+    <br />
+    <script type="text/javascript">
+        $(function () {           
+            if (!Modernizr.borderradius) {
+                $.getScript("../../Scripts/jquery.corner.js", function () {
+                    $("#main").corner("25px");
+                });
+            }
+        });
+    </script>
+</body>
+</html>
